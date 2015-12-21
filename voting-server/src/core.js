@@ -7,14 +7,16 @@ export function setEntries (state, entries) {
 }
 
 export function next (state) {
-  const entries = state.get('entries')
-  										 .concat(getWinners(state.get('vote')));
+  const winners = getWinners(state.get('vote'));
+  const entries = state.get('entries').concat(winners);
 
-	// good practice to always morph old state into new (not return brand new state)
+	// good practice to always morph old state 
+  //into new (not return brand new state)
   if (entries.size === 1) {
-  	return state.remove('vote')
-  							.remove('entries')
-  							.set('winner', entries.first());
+  	return state.
+      remove('vote').
+      remove('entries').
+      set('winner', entries.first());
   } else {
 	  return state.merge({
 	    vote: Map({ pair: entries.take(2) }),

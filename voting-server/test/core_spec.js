@@ -10,7 +10,7 @@ describe('application logic', () => {
     it('adds the entries to the state', () => {
       const state = Map();
 
-      const entries = ['Trainspotting', '28 Days Later'];
+      const entries = List.of('Trainspotting', '28 Days Later');
       const nextState = setEntries(state, entries);
 
       const expectedState = Map({
@@ -24,7 +24,7 @@ describe('application logic', () => {
       const state = Map();
 
       // note: entries is a plain JS array, not an Immutable list
-      const entries = List.of('Trainspotting', '28 Days Later');
+      const entries = ['Trainspotting', '28 Days Later'];
       const nextState = setEntries(state, entries);
 
       const expectedState = Map({
